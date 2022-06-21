@@ -32,5 +32,19 @@ namespace Retake1.Controllers
             var result = await _databaseService.GetAlbumAsync(idAlbum);
             return Ok(result);
         }
+        [HttpDelete("{idMusician")]
+        public async Task<IActionResult> DeleteMusician([FromRoute] int idMusician)
+        {
+            if (!await _databaseService.DoesMusicianExistAsync(idMusician))
+            {
+                return NotFound("Musician does not exist");
+            }
+            if (await _databaseService.DoesTrackHaveAlbum(idMusician))
+            {
+                return BadRequest("Musician has tracks in albums");
+            }
+            await _databaseService.RemoveMusicianAsync(idMusician);
+            return Ok();
+        }
     }
 }

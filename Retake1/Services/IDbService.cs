@@ -11,5 +11,8 @@ namespace Retake1.Services
         Task<AlbumDTO> GetAlbumAsync(int id);
         Task<List<TrackDTO>> GetTracksAsync(int id);
         Task<bool> DoesAlbumExistAsync(int id);
+        Task RemoveMusicianAsync(int id);
+        Task<bool> DoesTrackHaveAlbum(int id);
+        Task<bool> DoesMusicianExistAsync(int id);
     }
 }
