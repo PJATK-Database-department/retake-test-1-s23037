@@ -44,7 +44,7 @@ namespace Retake1.Controllers
                 return BadRequest("Musician has tracks in albums");
             }
             await _databaseService.RemoveMusicianAsync(idMusician);
-            return Ok();
+            return NoContent();
         }
     }
 }
